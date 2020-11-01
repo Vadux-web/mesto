@@ -1,0 +1,8 @@
+.opacity_60 {
+  opacity: 1;
+  /* transition: 1s ease; */
+}
+
+.opacity_60:hover {
+  opacity: 0.6;
+}

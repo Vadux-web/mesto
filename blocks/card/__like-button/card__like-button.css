@@ -1,0 +1,8 @@
+.card__like-button {
+  margin-left: auto;
+}
+
+.card__like-button:hover {
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
