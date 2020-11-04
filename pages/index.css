@@ -8,8 +8,8 @@
 
 /* Подключаем прозрачность для наведения */
 
-@import url(../blocks/opacity/opacity_60.css);
-@import url(../blocks/opacity/opacity_80.css);
+@import url(../blocks/opacity/opacity60.css);
+@import url(../blocks/opacity/opacity80.css);
 
 /* Подключаем общие стили страницы */
 
