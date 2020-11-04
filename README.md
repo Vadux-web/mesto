@@ -6,7 +6,7 @@
 
 ***
 
-GHP link
+https://vadux-web.github.io/mesto/index.html
 
 ***
 
