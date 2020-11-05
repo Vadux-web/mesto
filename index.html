@@ -15,7 +15,7 @@
   <div class="page__container">
 
     <header class="header">
-      <a href="#"><img class="header__logo" src="./resources/images/logo.svg" alt="Mesto"></a>
+      <a href="#"><img class="header__logo" src="./resources/images/logo.svg" alt="Место"></a>
     </header>
 
     <main>
@@ -24,11 +24,11 @@
         <div class="profile__info">
           <div class="profile__title-edit">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <input class="profile__edit-button opacity60" type="image" src="./resources/images/Edit_Button.svg" alt="Edit button">
+            <button class="profile__edit-button" type="image"></button>
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <input class="profile__add-button opacity60" type="image" src="./resources/images/Add_Button_alt.svg" alt="Add button">
+        <button class="profile__add-button" type="image"></button>
       </section>
 
       <section class="cards">
@@ -38,7 +38,7 @@
               <img class="card__image" src="./resources/images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
               <div class="card__info">
                 <h2 class="card__title">Карачаевск</h2>
-                <input class="card__like-button" type="image" src="./resources/images/like.svg" alt="Like">
+                <button class="card__like-button" type="image"><img src="./resources/images/like.svg" alt="Нравится"></button>
               </div>
             </div>
           </li>
@@ -47,7 +47,7 @@
               <img class="card__image" src="./resources/images//kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус">
               <div class="card__info">
                 <h2 class="card__title">Гора Эльбрус</h2>
-                <input class="card__like-button" type="image" src="./resources/images/like.svg" alt="Like">
+                <button class="card__like-button" type="image"><img src="./resources/images/like.svg" alt="Нравится"></button>
               </div>
             </div>
           </li>
@@ -56,7 +56,7 @@
               <img class="card__image" src="./resources/images/kirill-pershin-1556355-unsplash-1.jpg" alt="Домбай">
               <div class="card__info">
                 <h2 class="card__title">Домбай</h2>
-                <input class="card__like-button" type="image" src="./resources/images/like.svg" alt="Like">
+                <button class="card__like-button" type="image"><img src="./resources/images/like.svg" alt="Нравится"></button>
               </div>
             </div>
           </li>
@@ -65,7 +65,7 @@
               <img class="card__image" src="./resources/images/kirill-pershin-1088404-unsplash.jpg" alt="Гора Эльбрус">
               <div class="card__info">
                 <h2 class="card__title">Гора Эльбрус</h2>
-                <input class="card__like-button" type="image" src="./resources/images/like.svg" alt="Like">
+                <button class="card__like-button" type="image"><img src="./resources/images/like.svg" alt="Нравится"></button>
               </div>
             </div>
           </li>
@@ -74,7 +74,7 @@
               <img class="card__image" src="./resources/images/kirill-pershin-1556355-unsplash-1.jpg" alt="Домбай">
               <div class="card__info">
                 <h2 class="card__title">Домбай</h2>
-                <input class="card__like-button" type="image" src="./resources/images/like.svg" alt="Like">
+                <button class="card__like-button" type="image"><img src="./resources/images/like.svg" alt="Нравится"></button>
               </div>
             </div>
           </li>
@@ -83,7 +83,7 @@
               <img class="card__image" src="./resources/images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкесия">
               <div class="card__info">
                 <h2 class="card__title">Карачаево-Черкесия</h2>
-                <input class="card__like-button" type="image" src="./resources/images/like.svg" alt="Like">
+                <button class="card__like-button" type="image"><img src="./resources/images/like.svg" alt="Нравится"></button>
               </div>
             </div>
           </li>
@@ -99,10 +99,10 @@
       <div class="popup__content">
         <button type="button" class="popup__close"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form">
-          <input type="text" placeholder="Жак-Ив Кусто" class="popup__input popup__input_type_title">
-          <input type="text" placeholder="Исследователь океана" class="popup__input popup__input_type_subtitle">
-          <button type="submit" class="popup__submit opacity80">Сохранить</button>
+        <form name="popup-form" class="popup__form">
+          <input name="popup-title" type="text" class="popup__input popup__input_type_title">
+          <input name="popup-subtitle" type="text" class="popup__input popup__input_type_subtitle">
+          <button type="submit" class="popup__submit">Сохранить</button>
         </form>
       </div>
     </div>

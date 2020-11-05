@@ -7,11 +7,20 @@
   border: 2px solid #ffffff;
   border-radius: 2px;
   margin-left: auto;
+  background-image: url(../../../resources/images/Add_Button_alt.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 640px) {
   .profile__add-button {
     width: 282px;
     margin: auto;
+    background-size: 16px;
   }
 }
