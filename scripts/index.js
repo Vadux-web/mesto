@@ -18,6 +18,8 @@ const subTitleField = document.querySelector('.popup__input_type_subtitle');
 
 function showPopup() {
   popup.classList.add('popup_opened');
+  titleField.value = title.textContent;
+  subTitleField.value = subTitle.textContent;
 }
 
 //Функция закрытия попапа
@@ -34,10 +36,6 @@ function popupClickHandler(event) {
   }
 }
 
-editButton.addEventListener('click', showPopup);
-popupCloseButton.addEventListener('click', closePopup);
-popup.addEventListener('mousedown', popupClickHandler);
-
 //Функция отправки формы
 
 function submitForm(event) {
@@ -47,4 +45,8 @@ function submitForm(event) {
   closePopup();
 }
 
+
+editButton.addEventListener('click', showPopup);
+popupCloseButton.addEventListener('click', closePopup);
+popup.addEventListener('mousedown', popupClickHandler);
 form.addEventListener('submit', submitForm);
