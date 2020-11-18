@@ -28,19 +28,31 @@ const initialCards = [{
 const cardList = document.querySelector('.cards__list');
 
 initialCards.forEach(card => {
-  const templateCards = `
-  <li>
-  <div class="card">
-    <img class="card__image" src="${card.link}" alt="${card.name}">
-    <div class="card__info">
-      <h2 class="card__title">${card.name}</h2>
-      <button class="card__like-button" type="button"><img src="./resources/images/like.svg" alt="Нравится"></button>
-    </div>
-  </div>
-</li>
-`
-  cardList.insertAdjacentHTML("beforeend", templateCards);
+  const templateCards = document.querySelector('.card-template').content.cloneNode(true);
+  templateCards.querySelector('.card__image').src = card.link;
+  templateCards.querySelector('.card__title').textContent = card.name;
+  cardList.append(templateCards);
 });
+
+
+//Реализуем возможность добавления новых карточек
+// function addCard(card) {
+//   const templateCards = `
+//   <li>
+//   <div class="card">
+//     <img class="card__image" src="${card.link}" alt="${card.name}">
+//     <div class="card__info">
+//       <h2 class="card__title">${card.name}</h2>
+//       <button class="card__like-button" type="button"><img src="./resources/images/like.svg" alt="Нравится"></button>
+//     </div>
+//   </div>
+// </li>
+// `
+//   cardList.insertAdjacentHTML("beforeend", templateCards);
+// };
+
+// initialCards.forEach(addCard);
+
 
 
 

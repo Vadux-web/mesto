@@ -33,60 +33,6 @@
 
       <section class="cards">
         <ul class="cards__list">
-          <!-- <li>
-            <div class="card">
-              <img class="card__image" src="./resources/images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
-              <div class="card__info">
-                <h2 class="card__title">Карачаевск</h2>
-                <button class="card__like-button" type="button"><img src="./resources/images/like.svg" alt="Нравится"></button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card">
-              <img class="card__image" src="./resources/images//kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус">
-              <div class="card__info">
-                <h2 class="card__title">Гора Эльбрус</h2>
-                <button class="card__like-button" type="button"><img src="./resources/images/like.svg" alt="Нравится"></button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card">
-              <img class="card__image" src="./resources/images/kirill-pershin-1556355-unsplash-1.jpg" alt="Домбай">
-              <div class="card__info">
-                <h2 class="card__title">Домбай</h2>
-                <button class="card__like-button" type="button"><img src="./resources/images/like.svg" alt="Нравится"></button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card">
-              <img class="card__image" src="./resources/images/kirill-pershin-1088404-unsplash.jpg" alt="Гора Эльбрус">
-              <div class="card__info">
-                <h2 class="card__title">Гора Эльбрус</h2>
-                <button class="card__like-button" type="button"><img src="./resources/images/like.svg" alt="Нравится"></button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card">
-              <img class="card__image" src="./resources/images/kirill-pershin-1556355-unsplash-1.jpg" alt="Домбай">
-              <div class="card__info">
-                <h2 class="card__title">Домбай</h2>
-                <button class="card__like-button" type="button"><img src="./resources/images/like.svg" alt="Нравится"></button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card">
-              <img class="card__image" src="./resources/images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкесия">
-              <div class="card__info">
-                <h2 class="card__title">Карачаево-Черкесия</h2>
-                <button class="card__like-button" type="button"><img src="./resources/images/like.svg" alt="Нравится"></button>
-              </div>
-            </div>
-          </li> -->
         </ul>
       </section>
     </main>
@@ -107,6 +53,19 @@
       </div>
     </div>
   </div>
+
+  <template class="card-template">
+    <li>
+      <div class="card">
+        <img class="card__image" src="${card.link}" alt="${card.name}">
+        <div class="card__info">
+          <h2 class="card__title">${card.name}</h2>
+          <button class="card__like-button" type="button"><img src="./resources/images/like.svg" alt="Нравится"></button>
+        </div>
+      </div>
+    </li>
+  </template>
+
   <script src="./scripts/index.js"></script>
 </body>
 
