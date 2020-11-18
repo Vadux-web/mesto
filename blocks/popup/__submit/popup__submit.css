@@ -10,6 +10,11 @@
   font-weight: 400;
 }
 
+.popup__submit:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 640px) {
   .popup__submit {
     height: 46px;

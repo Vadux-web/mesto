@@ -6,11 +6,6 @@
 
 @import url(../resources/fonts/font.css);
 
-/* Подключаем прозрачность для наведения */
-
-@import url(../blocks/opacity/opacity_60.css);
-@import url(../blocks/opacity/opacity_80.css);
-
 /* Подключаем общие стили страницы */
 
 @import url(../blocks/page/page.css);
