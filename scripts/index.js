@@ -30,13 +30,13 @@ const cardList = document.querySelector('.cards__list');
 initialCards.forEach(card => {
   const templateCards = document.querySelector('.card-template').content.cloneNode(true);
   templateCards.querySelector('.card__image').src = card.link;
+  templateCards.querySelector('.card__image').alt = card.name;
   templateCards.querySelector('.card__title').textContent = card.name;
   cardList.append(templateCards);
 });
 
-
 //Реализуем возможность добавления новых карточек
-// function addCard(card) {
+//function addCard(card) {
 //   const templateCards = `
 //   <li>
 //   <div class="card">
