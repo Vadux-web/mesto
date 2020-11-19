@@ -19,7 +19,6 @@ const popupCloseButtonCard = popupTypeCard.querySelector('.popup__close');
 const addButton = document.querySelector('.profile__add-button');
 
 
-
 // выбираем элементы формы Редактирования профиля
 const title = document.querySelector('.profile__title');
 const subTitle = document.querySelector('.profile__subtitle');
