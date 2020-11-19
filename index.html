@@ -55,9 +55,9 @@
   </div>
 
   <div class="popup popup_type_card">
-    <div class="popup__content">
-      <button type="button" class="popup__close"></button>
-      <h3 class="popup__title">Новое место</h3>
+    <div class="popup__content popup__content_type_card">
+      <button type="button" class="popup__close popup__close_type_card"></button>
+      <h3 class="popup__title popup__title_type_card">Новое место</h3>
       <form name="popup-form" class="popup__form">
         <input name="popup-title" type="text" class="popup__input popup__input_type_img-name" placeholder="Название">
         <input name="popup-subtitle" type="text" class="popup__input popup__input_type_img-link" placeholder="Ссылка на картинку">
@@ -68,12 +68,13 @@
   </div>
 
   <template class="card-template">
-    <li>
+    <li class="card-li">
       <div class="card">
-        <img class="card__image" src="" alt="${card.name}">
+        <button class="card__trash-button" type="button"><img src="./resources/images/Trash.svg" alt="Удалить"></button>
+        <img class="card__image" src="" alt="">
         <div class="card__info">
           <h2 class="card__title"></h2>
-          <button class="card__like-button" type="button"><img src="./resources/images/like.svg" alt="Нравится"></button>
+          <button class="card__like-button" type="button"></button>
         </div>
       </div>
     </li>

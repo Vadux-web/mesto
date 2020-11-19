@@ -1,0 +1,6 @@
+@media screen and (max-width: 640px) {
+  .popup__input_type_img-name {
+    font-size: 12px;
+    margin-bottom: 13px;
+  }
+}

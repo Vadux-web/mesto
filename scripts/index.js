@@ -3,6 +3,7 @@ const popupTypeUser = document.querySelector('.popup_type_user');
 const popupContent = popupTypeUser.querySelector('.popup__content');
 const popupTitle = popupTypeUser.querySelector('.popup__title');
 
+
 // выбираем элементы попапа Добавления карточки
 const popupTypeCard = document.querySelector('.popup_type_card');
 const popupContentCard = popupTypeCard.querySelector('.popup__content');
@@ -45,9 +46,8 @@ function showPopupTypeUser() {
 // функция открытия попапа Добавления карточки
 function showPopupTypeCard() {
   popupTypeCard.classList.add('popup_opened');
-  // titleFieldCard.value = titleCard.textContent;
-  // subTitleFieldCard.value = subTitleCard.textContent;
 }
+
 
 
 
@@ -141,41 +141,23 @@ function addCard(elem) {
   const cardName = templateCards.querySelector('.card__title');
   cardName.textContent = elem.name;
   cardLink.alt = elem.name;
+
+  templateCards.querySelector('.card__trash-button').addEventListener('click', event => {
+    const card = event.target.closest('.card-li').remove();
+  })
+
+  templateCards.querySelector('.card__like-button').addEventListener('click', function(event) {
+    event.target.classList.toggle('card__like-button_active');
+  });
+
   cardList.prepend(templateCards);
 };
-
-initialCards.forEach(addCard);
-
-
 
 cardForm.addEventListener("submit", event => {
   event.preventDefault();
   addCard({ link: subTitleFieldCard.value, name: titleFieldCard.value });
   closePopupTypeCard();
+  cardForm.reset();
 });
 
-
-
-
-
-
-// const cardList = document.querySelector('.cards__list');
-// const addCard = popupTypeCard.querySelector('.popup__form');
-
-// initialCards.forEach(card => {
-//   const templateCards = document.querySelector('.card-template').content.cloneNode(true);
-//   const cardLink = templateCards.querySelector('.card__image');
-//   const cardTitle = templateCards.querySelector('.card__title');
-//   cardLink.src = card.link;
-//   cardLink.alt = card.name;
-//   cardTitle.textContent = card.name;
-//   cardList.append(templateCards);
-// });
-
-// addCard.addEventListener("submit", event => {
-//   event.preventDefault();
-//   // const cardLink = 
-
-// })
-
-// initialCards.forEach(addCard);
+initialCards.forEach(addCard);

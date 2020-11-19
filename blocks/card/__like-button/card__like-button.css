@@ -1,12 +1,12 @@
 .card__like-button {
+  width: 30px;
+  background: transparent url('../../../resources/images/like.svg') center no-repeat;
   margin-left: auto;
   border: 0;
   padding: 0;
-  background-color: transparent;
+  cursor: pointer;
 }
 
 .card__like-button:hover {
-  -webkit-filter: invert(100%);
-  filter: invert(100%);
-  cursor: pointer;
+  opacity: 0.6;
 }
