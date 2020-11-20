@@ -50,8 +50,12 @@
 /* Подключаем стили для popup */
 
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/popup_type_preview.css);
 @import url(../blocks/popup/__content/popup__content.css);
 @import url(../blocks/popup/__content/popup__content_type_card.css);
+@import url(../blocks/popup/__content/popup__content_type_preview.css);
+@import url(../blocks/popup/__img/popup__img-preview.css);
+@import url(../blocks/popup/__img/popup__img-title.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__close/popup__close_type_card.css);
 @import url(../blocks/popup/__title/popup__title.css);

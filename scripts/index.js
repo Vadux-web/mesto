@@ -3,7 +3,6 @@ const popupTypeUser = document.querySelector('.popup_type_user');
 const popupContent = popupTypeUser.querySelector('.popup__content');
 const popupTitle = popupTypeUser.querySelector('.popup__title');
 
-
 // выбираем элементы попапа Добавления карточки
 const popupTypeCard = document.querySelector('.popup_type_card');
 const popupContentCard = popupTypeCard.querySelector('.popup__content');
@@ -18,6 +17,7 @@ const editButton = document.querySelector('.profile__edit-button');
 // выбираем элементы кнопки Добавления карточки
 const popupCloseButtonCard = popupTypeCard.querySelector('.popup__close');
 const addButton = document.querySelector('.profile__add-button');
+
 
 
 // выбираем элементы формы Редактирования профиля
@@ -47,7 +47,6 @@ function showPopupTypeUser() {
 function showPopupTypeCard() {
   popupTypeCard.classList.add('popup_opened');
 }
-
 
 
 
@@ -101,12 +100,40 @@ popupCloseButton.addEventListener('click', closePopupTypeUser);
 popupTypeUser.addEventListener('mousedown', popupClickHandlerTypeUser);
 form.addEventListener('submit', submitFormTypeUser);
 
-
-//обработчик событий формы Редактирования профиля
+//обработчик событий формы Добавления карточки
 addButton.addEventListener('click', showPopupTypeCard);
 popupCloseButtonCard.addEventListener('click', closePopupTypeCard);
 popupTypeCard.addEventListener('mousedown', popupClickHandlerTypeCard);
 formCard.addEventListener('submit', submitFormTypeCard);
+
+
+
+// выбираем элементы popup preview карточки
+const popupTypePreview = document.querySelector('.popup_type_preview');
+const popupImgPreview = popupTypePreview.querySelector('.popup__img-preview');
+const popupImgTitle = popupTypePreview.querySelector('.popup__img-title');
+const ImgPreviewCloseButton = popupTypePreview.querySelector('.popup__close');
+
+// функция открытия popup preview карточки
+function imagePreview() {
+  popupTypePreview.classList.add('popup_opened');
+};
+
+// функция закрытия popup preview карточки
+function closeImagePreview() {
+  popupTypePreview.classList.remove('popup_opened');
+};
+
+//Функция закрытия popup preview карточки по клику на фон
+function popupClickHandlerTypePreview(event) {
+  if (event.target.classList.contains('popup_type_preview')) {
+    closeImagePreview();
+  }
+}
+
+//обработчик событий popup preview карточки
+ImgPreviewCloseButton.addEventListener('click', closeImagePreview);
+popupTypePreview.addEventListener('mousedown', popupClickHandlerTypePreview);
 
 
 
@@ -144,10 +171,16 @@ function addCard(elem) {
 
   templateCards.querySelector('.card__trash-button').addEventListener('click', event => {
     const card = event.target.closest('.card-li').remove();
-  })
+  });
 
   templateCards.querySelector('.card__like-button').addEventListener('click', function(event) {
     event.target.classList.toggle('card__like-button_active');
+  });
+
+  cardLink.addEventListener('click', function(event) {
+    imagePreview();
+    popupImgPreview.src = event.target.src;
+    popupImgTitle.textContent = elem.name;
   });
 
   cardList.prepend(templateCards);
