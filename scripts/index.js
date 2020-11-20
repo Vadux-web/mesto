@@ -19,6 +19,7 @@ const popupCloseButtonCard = popupTypeCard.querySelector('.popup__close');
 const addButton = document.querySelector('.profile__add-button');
 
 
+
 // выбираем элементы формы Редактирования профиля
 const title = document.querySelector('.profile__title');
 const subTitle = document.querySelector('.profile__subtitle');
@@ -45,8 +46,6 @@ function showPopupTypeUser() {
 // функция открытия попапа Добавления карточки
 function showPopupTypeCard() {
   popupTypeCard.classList.add('popup_opened');
-  // titleFieldCard.value = titleCard.textContent;
-  // subTitleFieldCard.value = subTitleCard.textContent;
 }
 
 
@@ -101,12 +100,40 @@ popupCloseButton.addEventListener('click', closePopupTypeUser);
 popupTypeUser.addEventListener('mousedown', popupClickHandlerTypeUser);
 form.addEventListener('submit', submitFormTypeUser);
 
-
-//обработчик событий формы Редактирования профиля
+//обработчик событий формы Добавления карточки
 addButton.addEventListener('click', showPopupTypeCard);
 popupCloseButtonCard.addEventListener('click', closePopupTypeCard);
 popupTypeCard.addEventListener('mousedown', popupClickHandlerTypeCard);
 formCard.addEventListener('submit', submitFormTypeCard);
+
+
+
+// выбираем элементы popup preview карточки
+const popupTypePreview = document.querySelector('.popup_type_preview');
+const popupImgPreview = popupTypePreview.querySelector('.popup__img-preview');
+const popupImgTitle = popupTypePreview.querySelector('.popup__img-title');
+const ImgPreviewCloseButton = popupTypePreview.querySelector('.popup__close');
+
+// функция открытия popup preview карточки
+function imagePreview() {
+  popupTypePreview.classList.add('popup_opened');
+};
+
+// функция закрытия popup preview карточки
+function closeImagePreview() {
+  popupTypePreview.classList.remove('popup_opened');
+};
+
+//Функция закрытия popup preview карточки по клику на фон
+function popupClickHandlerTypePreview(event) {
+  if (event.target.classList.contains('popup_type_preview')) {
+    closeImagePreview();
+  }
+}
+
+//обработчик событий popup preview карточки
+ImgPreviewCloseButton.addEventListener('click', closeImagePreview);
+popupTypePreview.addEventListener('mousedown', popupClickHandlerTypePreview);
 
 
 
@@ -141,41 +168,29 @@ function addCard(elem) {
   const cardName = templateCards.querySelector('.card__title');
   cardName.textContent = elem.name;
   cardLink.alt = elem.name;
+
+  templateCards.querySelector('.card__trash-button').addEventListener('click', event => {
+    const card = event.target.closest('.card-li').remove();
+  });
+
+  templateCards.querySelector('.card__like-button').addEventListener('click', function(event) {
+    event.target.classList.toggle('card__like-button_active');
+  });
+
+  cardLink.addEventListener('click', function(event) {
+    imagePreview();
+    popupImgPreview.src = event.target.src;
+    popupImgTitle.textContent = elem.name;
+  });
+
   cardList.prepend(templateCards);
 };
-
-initialCards.forEach(addCard);
-
-
 
 cardForm.addEventListener("submit", event => {
   event.preventDefault();
   addCard({ link: subTitleFieldCard.value, name: titleFieldCard.value });
   closePopupTypeCard();
+  cardForm.reset();
 });
 
-
-
-
-
-
-// const cardList = document.querySelector('.cards__list');
-// const addCard = popupTypeCard.querySelector('.popup__form');
-
-// initialCards.forEach(card => {
-//   const templateCards = document.querySelector('.card-template').content.cloneNode(true);
-//   const cardLink = templateCards.querySelector('.card__image');
-//   const cardTitle = templateCards.querySelector('.card__title');
-//   cardLink.src = card.link;
-//   cardLink.alt = card.name;
-//   cardTitle.textContent = card.name;
-//   cardList.append(templateCards);
-// });
-
-// addCard.addEventListener("submit", event => {
-//   event.preventDefault();
-//   // const cardLink = 
-
-// })
-
-// initialCards.forEach(addCard);
+initialCards.forEach(addCard);

@@ -8,5 +8,10 @@
   left: 0;
   bottom: 0;
   right: 0;
-  display: none;
+  height: 0;
+  display: flex;
+  transition-property: opacity, height;
+  transition-duration: 0.5s, 0s;
+  transition-delay: 0s, 0.5s;
+  opacity: 0;
 }
