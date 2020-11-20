@@ -1,0 +1,23 @@
+.popup__content_type_preview {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: transparent;
+  border-radius: 0;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+@media screen and (max-width: 640px) {
+  .popup__content_type_preview {
+    width: auto;
+    height: auto;
+    padding: 0;
+  }
+}
+
+
+}

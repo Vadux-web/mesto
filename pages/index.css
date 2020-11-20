@@ -39,6 +39,8 @@
 @import url(../blocks/card/__info/card__info.css);
 @import url(../blocks/card/__title/card__title.css);
 @import url(../blocks/card/__like-button/card__like-button.css);
+@import url(../blocks/card/__like-button/card__like-button_active.css);
+@import url(../blocks/card/__trash-button/card__trash-button.css);
 
 /* Подключаем стили для footer */
 
@@ -48,10 +50,19 @@
 /* Подключаем стили для popup */
 
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/popup_type_preview.css);
 @import url(../blocks/popup/__content/popup__content.css);
+@import url(../blocks/popup/__content/popup__content_type_card.css);
+@import url(../blocks/popup/__content/popup__content_type_preview.css);
+@import url(../blocks/popup/__img/popup__img-preview.css);
+@import url(../blocks/popup/__img/popup__img-title.css);
 @import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__close/popup__close_type_card.css);
 @import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__title/popup__title_type_card.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__input/popup__input_type_img-name.css);
+@import url(../blocks/popup/__input/popup__input_type_img-link.css);
 @import url(../blocks/popup/__submit/popup__submit.css);
