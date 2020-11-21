@@ -1,14 +1,8 @@
 // выбираем элементы попапа Редактирования профиля
 const popupTypeUser = document.querySelector('.popup_type_user');
-const popupContent = popupTypeUser.querySelector('.popup__content');
-const popupTitle = popupTypeUser.querySelector('.popup__title');
 
 // выбираем элементы попапа Добавления карточки
 const popupTypeCard = document.querySelector('.popup_type_card');
-const popupContentCard = popupTypeCard.querySelector('.popup__content');
-const popupTitleCard = popupTypeCard.querySelector('.popup__title');
-
-
 
 // выбираем элементы кнопки Редактирования профиля
 const popupCloseButton = popupTypeUser.querySelector('.popup__close');
@@ -18,8 +12,6 @@ const editButton = document.querySelector('.profile__edit-button');
 const popupCloseButtonCard = popupTypeCard.querySelector('.popup__close');
 const addButton = document.querySelector('.profile__add-button');
 
-
-
 // выбираем элементы формы Редактирования профиля
 const title = document.querySelector('.profile__title');
 const subTitle = document.querySelector('.profile__subtitle');
@@ -28,85 +20,62 @@ const titleField = popupTypeUser.querySelector('.popup__input_type_title');
 const subTitleField = popupTypeUser.querySelector('.popup__input_type_subtitle');
 
 // выбираем элементы формы Добавления карточки
-const titleCard = popupTypeCard.querySelector('.profile__title');
-const subTitleCard = popupTypeCard.querySelector('.profile__subtitle');
 const formCard = popupTypeCard.querySelector('.popup__form');
 const titleFieldCard = popupTypeCard.querySelector('.popup__input_type_img-name');
 const subTitleFieldCard = popupTypeCard.querySelector('.popup__input_type_img-link');
 
+// функция открытия попапа
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+}
 
-
-// функция открытия попапа Редактирования профиля
-function showPopupTypeUser() {
-  popupTypeUser.classList.add('popup_opened');
+// функция заполнения полей Редактирования профиля
+function fillValue() {
   titleField.value = title.textContent;
   subTitleField.value = subTitle.textContent;
 }
 
-// функция открытия попапа Добавления карточки
-function showPopupTypeCard() {
-  popupTypeCard.classList.add('popup_opened');
+//Функция закрытия попапа
+function closePopup(popupClose) {
+  popupClose.classList.remove('popup_opened');
 }
-
-
-
-//Функция закрытия попапа Редактирования профиля
-function closePopupTypeUser() {
-  popupTypeUser.classList.remove('popup_opened');
-}
-
-//Функция закрытия попапа Добавления карточки
-function closePopupTypeCard() {
-  popupTypeCard.classList.remove('popup_opened');
-}
-
-
 
 //Функция закрытия попапа Редактирования профиля по клику на фон
 function popupClickHandlerTypeUser(event) {
   if (event.target.classList.contains('popup_type_user')) {
-    closePopupTypeUser();
+    closePopup(popupTypeUser);
   }
 }
 
 //Функция закрытия попапа Добавления карточки по клику на фон
 function popupClickHandlerTypeCard(event) {
   if (event.target.classList.contains('popup_type_card')) {
-    closePopupTypeCard();
+    closePopup(popupTypeCard);
   }
 }
-
-
 
 //Функция отправки формы Редактирования профиля
 function submitFormTypeUser(event) {
   event.preventDefault();
   title.textContent = titleField.value;
   subTitle.textContent = subTitleField.value;
-  closePopupTypeUser();
+  closePopup(popupTypeUser);
 }
-
-//Функция отправки формы Добавления карточки
-function submitFormTypeCard(event) {
-  event.preventDefault();
-  closePopupTypeCard();
-}
-
-
 
 //обработчик событий формы Редактирования профиля
-editButton.addEventListener('click', showPopupTypeUser);
-popupCloseButton.addEventListener('click', closePopupTypeUser);
+editButton.addEventListener('click', () => {
+  openPopup(popupTypeUser);
+  fillValue();
+});
+popupCloseButton.addEventListener('click', () => closePopup(popupTypeUser));
 popupTypeUser.addEventListener('mousedown', popupClickHandlerTypeUser);
 form.addEventListener('submit', submitFormTypeUser);
 
 //обработчик событий формы Добавления карточки
-addButton.addEventListener('click', showPopupTypeCard);
-popupCloseButtonCard.addEventListener('click', closePopupTypeCard);
+addButton.addEventListener('click', () => openPopup(popupTypeCard));
+popupCloseButtonCard.addEventListener('click', () => closePopup(popupTypeCard));
 popupTypeCard.addEventListener('mousedown', popupClickHandlerTypeCard);
 formCard.addEventListener('submit', submitFormTypeCard);
-
-
 
 // выбираем элементы popup preview карточки
 const popupTypePreview = document.querySelector('.popup_type_preview');
@@ -135,8 +104,6 @@ function popupClickHandlerTypePreview(event) {
 ImgPreviewCloseButton.addEventListener('click', closeImagePreview);
 popupTypePreview.addEventListener('mousedown', popupClickHandlerTypePreview);
 
-
-
 // загружаем первоначальные карточки
 const initialCards = [{
   name: 'Байкал',
@@ -159,7 +126,6 @@ const initialCards = [{
 }];
 
 const cardList = document.querySelector('.cards__list');
-const cardForm = popupTypeCard.querySelector('.popup__form');
 
 function addCard(elem) {
   const templateCards = document.querySelector('.card-template').content.cloneNode(true);
@@ -170,7 +136,7 @@ function addCard(elem) {
   cardLink.alt = elem.name;
 
   templateCards.querySelector('.card__trash-button').addEventListener('click', event => {
-    const card = event.target.closest('.card-li').remove();
+    event.target.closest('.card-li').remove();
   });
 
   templateCards.querySelector('.card__like-button').addEventListener('click', function(event) {
@@ -183,14 +149,20 @@ function addCard(elem) {
     popupImgTitle.textContent = elem.name;
   });
 
-  cardList.prepend(templateCards);
+  cardList.append(templateCards);
 };
 
-cardForm.addEventListener("submit", event => {
+formCard.addEventListener("submit", event => {
   event.preventDefault();
   addCard({ link: subTitleFieldCard.value, name: titleFieldCard.value });
-  closePopupTypeCard();
-  cardForm.reset();
+  formCard.reset();
 });
+
+
+//Функция отправки формы Добавления карточки
+function submitFormTypeCard(event) {
+  event.preventDefault();
+  closePopup(popupTypeCard);
+}
 
 initialCards.forEach(addCard);
