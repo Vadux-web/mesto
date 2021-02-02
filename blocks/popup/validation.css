@@ -21,7 +21,7 @@
     border-bottom: 1px solid red;
 }
 
-.popup__submit_inactive{
+.popup__submit_inactive {
     opacity: 0.2;
     background-color: #ffffff;
     border: #000000 1px solid;
