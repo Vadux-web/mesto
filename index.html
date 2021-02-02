@@ -15,7 +15,7 @@
   <div class="page__container">
 
     <header class="header">
-      <a href="#"><img class="header__logo" src="./resources/images/logo.svg" alt="Место"></a>
+      <img class="header__logo" src="./resources/images/logo.svg" alt="Место">
     </header>
 
     <main>
@@ -46,9 +46,15 @@
       <div class="popup__content">
         <button type="button" class="popup__close"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form name="popup-form" class="popup__form">
-          <input name="popup-title" type="text" class="popup__input popup__input_type_title">
-          <input name="popup-subtitle" type="text" class="popup__input popup__input_type_subtitle">
+        <form name="popup-form" class="popup__form" novalidate>
+          <label class="popup__form-field">
+          <input id="popup__input_type_title" name="popup-title" type="text" class="popup__input popup__input_type_title" required minlength="2" maxlength="40">
+          <span class="popup__input_type_title-error popup__input-error"></span>
+          </label>
+          <label class="popup__form-field">
+          <input id="popup__input_type_subtitle" name="popup-subtitle" type="text" class="popup__input popup__input_type_subtitle" required minlength="2" maxlength="200">
+            <span class="popup__input_type_subtitle-error popup__input-error"></span>
+          </label>
           <button type="submit" class="popup__submit">Сохранить</button>
         </form>
       </div>
@@ -70,7 +76,7 @@
   <div class="popup popup_type_preview">
     <div class="popup__content popup__content_type_preview">
       <button type="button" class="popup__close popup__close_type_preview"></button>
-      <img class="popup__img-preview" src=" " alt="">
+      <img class="popup__img-preview" src=" " alt=" ">
       <h4 class="popup__img-title"></h4>
     </div>
   </div>
@@ -79,7 +85,7 @@
     <li class="card-li">
       <div class="card">
         <button class="card__trash-button" type="button"><img src="./resources/images/Trash.svg" alt="Удалить"></button>
-        <img class="card__image" src="" alt="">
+        <img class="card__image" src=" " alt=" ">
         <div class="card__info">
           <h2 class="card__title"></h2>
           <button class="card__like-button" type="button"></button>
@@ -89,6 +95,8 @@
   </template>
 
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
+
 </body>
 
 </html>

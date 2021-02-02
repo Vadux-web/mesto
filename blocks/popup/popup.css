@@ -9,7 +9,7 @@
   bottom: 0;
   right: 0;
   height: 0;
-  display: flex;
+  display: none;
   transition-property: opacity, height;
   transition-duration: 0.5s, 0s;
   transition-delay: 0s, 0.5s;
