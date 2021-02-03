@@ -7,7 +7,7 @@
   padding: 13px 2px;
 }
 
-.popup__input_error {
+.popup__input-error {
   font-size: 12px;
   font-weight: 400;
   color: red;
@@ -15,7 +15,7 @@
   margin-top: -12px;
 }
 
-.popup__input_error_active {
+.popup__input-error_active {
   opacity: 1;
 }
 

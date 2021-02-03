@@ -63,6 +63,6 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__input/popup__input.css);
-@import url(../blocks/popup/__input/popup__input_type-img-name.css);
-@import url(../blocks/popup/__input/popup__input_type-img-link.css);
+@import url(../blocks/popup/__input/popup__input_type_img-name.css);
+@import url(../blocks/popup/__input/popup__input_type_img-link.css);
 @import url(../blocks/popup/__submit/popup__submit.css);
