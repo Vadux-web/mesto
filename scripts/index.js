@@ -16,7 +16,7 @@ const addButton = document.querySelector(".profile__add-button");
 const title = document.querySelector(".profile__title");
 const subTitle = document.querySelector(".profile__subtitle");
 const form = popupTypeUser.querySelector(".popup__form");
-const titleField = popupTypeUser.querySelector(".popup__input_type-title");
+const titleField = popupTypeUser.querySelector(".popup__input_title");
 const subTitleField = popupTypeUser.querySelector(
   ".popup__input_type-subtitle"
 );
