@@ -23,7 +23,7 @@ const hideInputError = (formElement, inputElement) => {
 
 // Функция, которая проверяет валидность поля,
 // принимает formElement и inputElement, а не берёт их из внешней области видимости
-const isValid = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
     // showInputError теперь получает параметром форму, в которой
     // находится проверяемое поле, и само это поле
@@ -75,8 +75,8 @@ const setEventListeners = (formElement) => {
   inputList.forEach((inputElement) => {
     // каждому полю добавим обработчик события input
     inputElement.addEventListener("input", () => {
-      // Внутри колбэка вызовем isValid, передав ей форму и проверяемый элемент
-      isValid(formElement, inputElement);
+      // Внутри колбэка вызовем checkInputValidity, передав ей форму и проверяемый элемент
+      checkInputValidity(formElement, inputElement);
       // Вызовем toggleButtonState и передадим ей массив полей и кнопку
       toggleButtonState(inputList, buttonElement);
     });
