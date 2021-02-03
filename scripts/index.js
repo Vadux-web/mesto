@@ -16,18 +16,18 @@ const addButton = document.querySelector(".profile__add-button");
 const title = document.querySelector(".profile__title");
 const subTitle = document.querySelector(".profile__subtitle");
 const form = popupTypeUser.querySelector(".popup__form");
-const titleField = popupTypeUser.querySelector(".popup__input_type_title");
+const titleField = popupTypeUser.querySelector(".popup__input_type-title");
 const subTitleField = popupTypeUser.querySelector(
-  ".popup__input_type_subtitle"
+  ".popup__input_type-subtitle"
 );
 
 // выбираем элементы формы Добавления карточки
 const formCard = popupTypeCard.querySelector(".popup__form");
 const titleFieldCard = popupTypeCard.querySelector(
-  ".popup__input_type_img-name"
+  ".popup__input_type-img-name"
 );
 const subTitleFieldCard = popupTypeCard.querySelector(
-  ".popup__input_type_img-link"
+  ".popup__input_type-img-link"
 );
 
 // функция открытия попапа
