@@ -76,10 +76,17 @@ function popupEscHandlerTypeCard(event) {
 
 //Функция отправки формы Редактирования профиля
 function submitFormTypeUser(event) {
+  const formElement = event.target.closest("form");
+  const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
   event.preventDefault();
-  title.textContent = titleField.value;
-  subTitle.textContent = subTitleField.value;
-  closePopup(popupTypeUser);
+  if (hasInvalidInput(inputList)) {
+    // Запретить submit при ошибках валидации
+    return false;
+  } else {
+    title.textContent = titleField.value;
+    subTitle.textContent = subTitleField.value;
+    closePopup(popupTypeUser);
+  }
 }
 
 //обработчик событий формы Редактирования профиля
@@ -199,13 +206,19 @@ function createCard(dataCard) {
 
 //обработка отправки формы добавления карточки
 formCard.addEventListener("submit", (event) => {
+  const formElement = event.target.closest("form");
+  const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
   event.preventDefault();
-  const link = subTitleFieldCard.value;
-  const name = titleFieldCard.value;
-  if (!link || !name) return;
-
-  const card = createCard({ link, name });
-  cardList.prepend(card);
-  formCard.reset();
-  closePopup(popupTypeCard);
+  if (hasInvalidInput(inputList)) {
+    // Запретить submit при ошибках валидации
+    return false;
+  } else {
+    const link = subTitleFieldCard.value;
+    const name = titleFieldCard.value;
+    if (!link || !name) return;
+    const card = createCard({ link, name });
+    cardList.prepend(card);
+    formCard.reset();
+    closePopup(popupTypeCard);
+  }
 });
