@@ -67,7 +67,7 @@ function popupClickHandlerTypeCard(event) {
   }
 }
 
-//Функция закрытия попапа Редактирования профиля по нажатию на Esc
+//Функция закрытия попапа Добавления карточки по нажатию на Esc
 function popupEscHandlerTypeCard(event) {
   if (event.key === "Escape") {
     closePopup(popupTypeCard);
@@ -111,11 +111,19 @@ function popupClickHandlerTypePreview(event) {
   }
 }
 
+//Функция закрытия popup preview по нажатию на Esc
+function popupEscHandlerTypePreview(event) {
+  if (event.key === "Escape") {
+    closePopup(popupTypePreview);
+  }
+}
+
 //обработчик событий popup preview карточки
 ImgPreviewCloseButton.addEventListener("click", () =>
   closePopup(popupTypePreview)
 );
 popupTypePreview.addEventListener("mousedown", popupClickHandlerTypePreview);
+document.addEventListener("keydown", popupEscHandlerTypePreview);
 
 // загружаем первоначальные карточки
 const initialCards = [
