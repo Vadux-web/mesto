@@ -65,9 +65,15 @@
     <div class="popup__content popup__content_type_card">
       <button type="button" class="popup__close popup__close_type_card"></button>
       <h3 class="popup__title popup__title_type_card">Новое место</h3>
-      <form name="popup-form" class="popup__form">
-        <input name="popup-title" type="text" class="popup__input popup__input_type_img-name" placeholder="Название">
-        <input name="popup-subtitle" type="text" class="popup__input popup__input_type_img-link" placeholder="Ссылка на картинку">
+      <form name="popup-form" class="popup__form" novalidate>
+        <label class="popup__form-field">
+        <input id="popup__input_type_img-name" name="popup-title" type="text" class="popup__input popup__input_type_img-name" placeholder="Название" required minlength="2" maxlength="30">
+          <span class="popup__input_type_img-name-error popup__input-error"></span>
+        </label>
+        <label class="popup__form-field">
+        <input id="popup__input_type_img-link" name="popup-subtitle" type="url" class="popup__input popup__input_type_img-link" placeholder="Ссылка на картинку" required>
+          <span class="popup__input_type_img-link-error popup__input-error"></span>
+        </label>
         <button type="submit" class="popup__submit">Создать</button>
       </form>
     </div>
