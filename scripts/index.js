@@ -24,26 +24,25 @@ const subTitleField = popupTypeUser.querySelector(
 // выбираем элементы формы Добавления карточки
 const formCard = popupTypeCard.querySelector(".popup__form");
 const titleFieldCard = popupTypeCard.querySelector(
-  ".popup__input_type-img-name"
+  ".popup__input_type_img-name"
 );
 const subTitleFieldCard = popupTypeCard.querySelector(
-  ".popup__input_type-img-link"
+  ".popup__input_type_img-link"
 );
 
-// функция открытия попапа
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", closeByEscape);
+}
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeByEscape);
 }
 
 // функция заполнения полей Редактирования профиля
 function fillValue() {
   titleField.value = title.textContent;
   subTitleField.value = subTitle.textContent;
-}
-
-//Функция закрытия попапа
-function closePopup(popupClose) {
-  popupClose.classList.remove("popup_opened");
 }
 
 //Функция закрытия попапа Редактирования профиля по клику на фон
@@ -53,23 +52,17 @@ function popupClickHandlerTypeUser(event) {
   }
 }
 
-//Функция закрытия попапа Редактирования профиля по нажатию на Esc
-function popupEscHandlerTypeUser(event) {
-  if (event.key === "Escape") {
-    closePopup(popupTypeUser);
+//Функция закрытия всех попапов по нажатию на Escape
+function closeByEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
   }
 }
 
 // Функция закрытия попапа Добавления карточки по клику на фон
 function popupClickHandlerTypeCard(event) {
   if (event.target.classList.contains("popup_type_card")) {
-    closePopup(popupTypeCard);
-  }
-}
-
-//Функция закрытия попапа Добавления карточки по нажатию на Esc
-function popupEscHandlerTypeCard(event) {
-  if (event.key === "Escape") {
     closePopup(popupTypeCard);
   }
 }
@@ -96,14 +89,12 @@ editButton.addEventListener("click", () => {
 });
 popupCloseButton.addEventListener("click", () => closePopup(popupTypeUser));
 popupTypeUser.addEventListener("mousedown", popupClickHandlerTypeUser);
-document.addEventListener("keydown", popupEscHandlerTypeUser);
 form.addEventListener("submit", submitFormTypeUser);
 
 //обработчик событий формы Добавления карточки
 addButton.addEventListener("click", () => openPopup(popupTypeCard));
 popupCloseButtonCard.addEventListener("click", () => closePopup(popupTypeCard));
 popupTypeCard.addEventListener("mousedown", popupClickHandlerTypeCard);
-document.addEventListener("keydown", popupEscHandlerTypeCard);
 
 // выбираем элементы popup preview карточки
 const popupTypePreview = document.querySelector(".popup_type_preview");
@@ -118,19 +109,11 @@ function popupClickHandlerTypePreview(event) {
   }
 }
 
-//Функция закрытия popup preview по нажатию на Esc
-function popupEscHandlerTypePreview(event) {
-  if (event.key === "Escape") {
-    closePopup(popupTypePreview);
-  }
-}
-
 //обработчик событий popup preview карточки
 ImgPreviewCloseButton.addEventListener("click", () =>
   closePopup(popupTypePreview)
 );
 popupTypePreview.addEventListener("mousedown", popupClickHandlerTypePreview);
-document.addEventListener("keydown", popupEscHandlerTypePreview);
 
 // загружаем первоначальные карточки
 const initialCards = [
