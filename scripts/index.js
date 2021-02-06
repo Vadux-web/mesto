@@ -70,7 +70,7 @@ function submitFormTypeUser(event) {
   const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
   event.preventDefault();
   if (hasInvalidInput(inputList)) {
-    // Запретить submit при ошибках валидации
+    // Запретить submit по нажатию на Enter при ошибках валидации
     return false;
   } else {
     title.textContent = titleField.value;
@@ -156,10 +156,10 @@ function createCard(dataCard) {
       event.target.classList.toggle("card__like-button_active");
     });
 
-  cardLink.addEventListener("click", function (event) {
+  cardLink.addEventListener("click", function () {
     openPopup(popupTypePreview);
-    popupImgPreview.src = event.target.src;
-    popupImgTitle.textContent = elem.name;
+    popupImgPreview.src = dataCard.link;
+    popupImgTitle.textContent = dataCard.name;
   });
   return templateCard;
 }
@@ -170,7 +170,7 @@ formCard.addEventListener("submit", (event) => {
   const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
   event.preventDefault();
   if (hasInvalidInput(inputList)) {
-    // Запретить submit при ошибках валидации
+    // Запретить submit по нажатию на Enter при ошибках валидации
     return false;
   } else {
     const link = subTitleFieldCard.value;
