@@ -1,46 +1,42 @@
-class Card {
-  _dataCard;
-  _template;
-  _view;
+// import { handleOpenPopup } from "./index.js";
 
-  constructor(dataCard, template) {
+class Card {
+  constructor(dataCard, template, handleOpenPopup) {
     this._dataCard = dataCard;
     this._template = template;
+    this._handleOpenPopup = handleOpenPopup;
+    this._view = this._template.cloneNode(true);
   }
 
+  generateCard = () => {
+    this._titleElement = this._view.querySelector(".card__title");
+    this._imageElement = this._view.querySelector(".card__image");
+    this._likeButton = this._view.querySelector(".card__like-button");
+    this._deleteButton = this._view.querySelector(".card__trash-button");
+  };
+
   render = () => {
-    this._view = this._template.cloneNode(true);
-    this._view.querySelector(".card__title").textContent = this._dataCard.name;
-    this._view.querySelector(".card__image").src = this._dataCard.link;
+    this.generateCard();
+    this._titleElement.textContent = this._dataCard.name;
+    this._imageElement.src = this._dataCard.link;
+    this._imageElement.alt = this._dataCard.name;
+
     this._setEventListeners();
     return this._view;
   };
 
   _setEventListeners() {
-    this._view
-      .querySelector(".card__trash-button")
-      .addEventListener("click", (event) => {
-        event.target?.closest(".card-li").remove();
-      });
-
-    this._view
-      .querySelector(".card__like-button")
-      .addEventListener("click", function (event) {
-        event.target?.classList.toggle("card__like-button_active");
-      });
-
-    this._view.querySelector(".card__image").addEventListener("click", () => {
-      openPopup(popupTypePreview);
-      popupImgPreview.src = this._dataCard.link;
-      popupImgTitle.textContent = this._dataCard.name;
+    this._deleteButton.addEventListener("click", (event) => {
+      event.target?.closest(".card-li").remove();
     });
 
-    // выбираем элементы popup preview карточки
-    const popupTypePreview = document.querySelector(".popup_type_preview");
-    const popupImgPreview = popupTypePreview.querySelector(
-      ".popup__img-preview"
-    );
-    const popupImgTitle = popupTypePreview.querySelector(".popup__img-title");
+    this._likeButton.addEventListener("click", function (event) {
+      event.target?.classList.toggle("card__like-button_active");
+    });
+
+    this._imageElement.addEventListener("click", () => {
+      this._handleOpenPopup(this._dataCard.link, this._dataCard.name); //передаем данные
+    });
   }
 }
 

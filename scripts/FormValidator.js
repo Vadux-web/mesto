@@ -1,9 +1,4 @@
 class FormValidator {
-  _inputList = null;
-  _settings = null;
-  _formElement = null;
-  _buttonElement = null;
-
   constructor(settings, formElement) {
     this._settings = settings;
     this._formElement = formElement;
@@ -15,10 +10,10 @@ class FormValidator {
     this._inputList = Array.from(
       formElement.querySelectorAll(settings.inputSelector)
     );
-    this._toggleButtonState();
+    this.toggleButtonState();
   }
 
-  _toggleButtonState = () => {
+  toggleButtonState = () => {
     // Если есть хотя бы один невалидный инпут
     if (this._hasInvalidInput(this._inputList)) {
       // сделай кнопку неактивной
@@ -56,7 +51,7 @@ class FormValidator {
         // Внутри колбэка вызовем Validate, передав ей форму и проверяемый элемент
         this._validate(inputElement);
         // Вызовем toggleButtonState и передадим ей массив полей и кнопку
-        this._toggleButtonState();
+        this.toggleButtonState();
       });
     });
   }
