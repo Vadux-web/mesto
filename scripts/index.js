@@ -30,9 +30,6 @@ function submitFormTypeUser(event) {
   event.preventDefault();
   title.textContent = titleField.value;
   subTitle.textContent = subTitleField.value;
-  formElement
-    .querySelector(validationConfig.submitButtonSelector)
-    .classList.toggle(validationConfig.inactiveButtonClass);
   closePopup(popupTypeUser);
 }
 
@@ -103,13 +100,13 @@ initialCards.forEach((dataCard) => {
   const template = document
     .querySelector(".card-template")
     .content.cloneNode(true);
-  const card = new Card(dataCard, template);
+  const card = new Card(dataCard, template, handleOpenPopup);
   const renderResult = card.render();
   cardList.append(renderResult);
 });
 
 // функция открытия попапа Preview карточки
-export function handleOpenPopup(name, link) {
+function handleOpenPopup(name, link) {
   //принимает данные
   const popupTypePreview = document.querySelector(".popup_type_preview");
   const popupImgPreview = popupTypePreview.querySelector(".popup__img-preview");
@@ -121,7 +118,6 @@ export function handleOpenPopup(name, link) {
 
 //обработка отправки формы добавления карточки
 formCard.addEventListener("submit", (event) => {
-  const formElement = event.target.closest("form");
   event.preventDefault();
   const template = document
     .querySelector(".card-template")
@@ -133,9 +129,7 @@ formCard.addEventListener("submit", (event) => {
   const renderResult = card.render();
   cardList.prepend(renderResult);
   formCard.reset();
-  formElement
-    .querySelector(validationConfig.submitButtonSelector)
-    .classList.toggle(validationConfig.inactiveButtonClass);
+
   closePopup(popupTypeCard);
 });
 
@@ -157,4 +151,8 @@ const formList = Array.from(
 formList.forEach((formElement) => {
   const formValidator = new FormValidator(validationConfig, formElement);
   formValidator.enableValidation();
+  formValidator.toggleButtonState();
+  formElement.addEventListener("submit", (evt) => {
+    formValidator.toggleButtonState();
+  });
 });
