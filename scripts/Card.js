@@ -1,8 +1,6 @@
-class Card {
-  _dataCard;
-  _template;
-  _view;
+import { handleOpenPopup } from "./index.js";
 
+class Card {
   constructor(dataCard, template) {
     this._dataCard = dataCard;
     this._template = template;
@@ -12,6 +10,8 @@ class Card {
     this._view = this._template.cloneNode(true);
     this._view.querySelector(".card__title").textContent = this._dataCard.name;
     this._view.querySelector(".card__image").src = this._dataCard.link;
+    this._view.querySelector(".card__image").alt = this._dataCard.name;
+
     this._setEventListeners();
     return this._view;
   };
@@ -30,17 +30,8 @@ class Card {
       });
 
     this._view.querySelector(".card__image").addEventListener("click", () => {
-      openPopup(popupTypePreview);
-      popupImgPreview.src = this._dataCard.link;
-      popupImgTitle.textContent = this._dataCard.name;
+      handleOpenPopup(this._dataCard.link, this._dataCard.name); //передаем данные
     });
-
-    // выбираем элементы popup preview карточки
-    const popupTypePreview = document.querySelector(".popup_type_preview");
-    const popupImgPreview = popupTypePreview.querySelector(
-      ".popup__img-preview"
-    );
-    const popupImgTitle = popupTypePreview.querySelector(".popup__img-title");
   }
 }
 

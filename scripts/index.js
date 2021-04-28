@@ -1,4 +1,4 @@
-import Cards from "./Cards.js";
+import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 
 //============РЕДАКТИРОВАНИЕ ПРОФИЛЯ================
@@ -24,15 +24,19 @@ function fillValue() {
   subTitleField.value = subTitle.textContent;
 }
 
-// функция отправки формы Редактирования профиля
+//Функция отправки формы Редактирования профиля
 function submitFormTypeUser(event) {
+  const formElement = event.target.closest("form");
   event.preventDefault();
   title.textContent = titleField.value;
   subTitle.textContent = subTitleField.value;
+  formElement
+    .querySelector(validationConfig.submitButtonSelector)
+    .classList.toggle(validationConfig.inactiveButtonClass);
   closePopup(popupTypeUser);
 }
 
-// обработчик событий формы Редактирования профиля
+//обработчик событий формы Редактирования профиля
 editButton.addEventListener("click", () => {
   openPopup(popupTypeUser);
   fillValue();
@@ -50,9 +54,10 @@ function openPopup(popup) {
 // функция закрытия попапов
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeByEscape);
 }
 
-// функция закрытия всех попапов по клику на оверлей или крестик
+//Функция закрытия всех попапов по клику на оверлей или крестик
 const popups = document.querySelectorAll(".popup");
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
@@ -65,7 +70,7 @@ popups.forEach((popup) => {
   });
 });
 
-// функция закрытия всех попапов по нажатию на Escape
+//Функция закрытия всех попапов по нажатию на Escape
 function closeByEscape(evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector(".popup_opened");
@@ -81,55 +86,57 @@ const addButton = document.querySelector(".profile__add-button");
 // выбираем элементы попапа Добавления карточки
 const popupTypeCard = document.querySelector(".popup_type_card");
 
-//обработчик событий формы Добавления карточки
-addButton.addEventListener("click", () => {
-  openPopup(popupTypeCard);
-});
-
-// загружаем первоначальные карточки
-const initialCards = [
-  {
-    name: "Архыз",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-
-// создаем сущность Cards, через создание класса
-const cardsNew = new Cards(
-  ".cards__list",
-  document.querySelector(".card-template").content,
-  () => closePopup(popupTypeCard)
+// выбираем элементы формы Добавления карточки
+const formCard = popupTypeCard.querySelector(".popup__form");
+const titleFieldCard = popupTypeCard.querySelector(
+  ".popup__input_type_img-name"
+);
+const subTitleFieldCard = popupTypeCard.querySelector(
+  ".popup__input_type_img-link"
 );
 
-// перебераем массив данных
+//обработчик событий формы Добавления карточки
+addButton.addEventListener("click", () => openPopup(popupTypeCard));
+
+const cardList = document.querySelector(".cards__list");
 initialCards.forEach((dataCard) => {
-  cardsNew.addCard(dataCard);
+  const template = document
+    .querySelector(".card-template")
+    .content.cloneNode(true);
+  const card = new Card(dataCard, template);
+  const renderResult = card.render();
+  cardList.append(renderResult);
+});
+
+// функция открытия попапа Preview карточки
+export function handleOpenPopup(name, link) {
+  //принимает данные
+  const popupTypePreview = document.querySelector(".popup_type_preview");
+  const popupImgPreview = popupTypePreview.querySelector(".popup__img-preview");
+  const popupImgTitle = popupTypePreview.querySelector(".popup__img-title");
+  openPopup(popupTypePreview);
+  popupImgPreview.src = name;
+  popupImgTitle.textContent = link;
+}
+
+//обработка отправки формы добавления карточки
+formCard.addEventListener("submit", (event) => {
+  const formElement = event.target.closest("form");
+  event.preventDefault();
+  const template = document
+    .querySelector(".card-template")
+    .content.cloneNode(true);
+  const link = subTitleFieldCard.value;
+  const name = titleFieldCard.value;
+  if (!link || !name) return;
+  const card = new Card({ link, name }, template);
+  const renderResult = card.render();
+  cardList.prepend(renderResult);
+  formCard.reset();
+  formElement
+    .querySelector(validationConfig.submitButtonSelector)
+    .classList.toggle(validationConfig.inactiveButtonClass);
+  closePopup(popupTypeCard);
 });
 
 const validationConfig = {
