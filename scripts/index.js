@@ -97,9 +97,7 @@ addButton.addEventListener("click", () => openPopup(popupTypeCard));
 
 const cardList = document.querySelector(".cards__list");
 initialCards.forEach((dataCard) => {
-  const template = document
-    .querySelector(".card-template")
-    .content.cloneNode(true);
+  const template = document.querySelector(".card-template").content;
   const card = new Card(dataCard, template, handleOpenPopup);
   const renderResult = card.render();
   cardList.append(renderResult);
@@ -119,9 +117,7 @@ function handleOpenPopup(name, link) {
 //обработка отправки формы добавления карточки
 formCard.addEventListener("submit", (event) => {
   event.preventDefault();
-  const template = document
-    .querySelector(".card-template")
-    .content.cloneNode(true);
+  const template = document.querySelector(".card-template").content;
   const link = subTitleFieldCard.value;
   const name = titleFieldCard.value;
   if (!link || !name) return;

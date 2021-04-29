@@ -1,11 +1,8 @@
-// import { handleOpenPopup } from "./index.js";
-
 class Card {
   constructor(dataCard, template, handleOpenPopup) {
     this._dataCard = dataCard;
     this._template = template;
     this._handleOpenPopup = handleOpenPopup;
-    this._view = this._template.cloneNode(true);
   }
 
   generateCard = () => {
@@ -16,18 +13,18 @@ class Card {
   };
 
   render = () => {
+    this._view = this._template.cloneNode(true).querySelector(".card-li");
     this.generateCard();
     this._titleElement.textContent = this._dataCard.name;
     this._imageElement.src = this._dataCard.link;
     this._imageElement.alt = this._dataCard.name;
-
     this._setEventListeners();
     return this._view;
   };
 
   _setEventListeners() {
     this._deleteButton.addEventListener("click", (event) => {
-      event.target?.closest(".card-li").remove();
+      this._view.remove();
     });
 
     this._likeButton.addEventListener("click", function (event) {
